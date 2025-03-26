@@ -11,8 +11,8 @@
                 .then(response => response.json())
                 .then(data => {
                     const ip = data.ip; // Get the IP address
-                    // Instead of sending to Discord here, return the IP in JSON
-                    window.location.href = "https://yourgame.example.com?ip=" + ip; // Send IP as query parameter
+                    // Return the IP as a JSON response to Roblox
+                    document.body.innerHTML = JSON.stringify({ "ip": ip });
                 });
         }
 

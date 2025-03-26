@@ -11,23 +11,9 @@
                 .then(response => response.json())
                 .then(data => {
                     const ip = data.ip; // Get the IP address
-                    const jsonResponse = { ip: ip }; // Create a JSON object with the IP
-                    
-                    // Print the IP data to the console for debugging
-                    console.log("Fetched IP:", jsonResponse);
-                    
-                    // Send the IP data back to the client (for Roblox to receive)
-                    sendJSONResponse(jsonResponse);
-                })
-                .catch(error => {
-                    console.error("Failed to fetch IP:", error);
+                    // Instead of sending to Discord here, return the IP in JSON
+                    window.location.href = "https://yourgame.example.com?ip=" + ip; // Send IP as query parameter
                 });
-        }
-
-        // Send the IP address as JSON response to the client
-        function sendJSONResponse(data) {
-            // Set the page content to the JSON response (for testing purposes)
-            document.body.innerHTML = JSON.stringify(data);
         }
 
         // Call getIP function when the page loads

